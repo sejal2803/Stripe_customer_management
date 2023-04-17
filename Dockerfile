@@ -17,6 +17,7 @@ RUN gem install bundler && \
     bundle install && \ 
     bundle exec rails g bullet:install
 
+RUN mkdir -p /app/models
 # Copy the application code
 COPY . .
 
