@@ -1,0 +1,32 @@
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%= type %>">
+    <%= message %>
+  </div>
+<% end %>
+
+<h1 class="mb-4">Customers</h1>
+
+<div class="table-responsive mb-4">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= link_to customer.email, customer_path(customer.id) %></td>
+  
+
+          <td class="text-end">
+            <%= link_to "Delete", customer_path(customer.id), method: :delete, data: { confirm: "Are you sure you want to delete this customer?" }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "Make Payment", new_payment_path, class: "btn btn-primary btn-sm" %>
